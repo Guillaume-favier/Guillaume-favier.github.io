@@ -1,27 +1,98 @@
 ﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Azeex Harem</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
-        body, *{
-            font-family: 'Lato', sans-serif;
-        }
-        h1{
-            font-size: 5em;
-            text-align: center;
-            margin-top: 0.7em;
-        }
-    </style>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Azeex Harem</title>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+		body, *{
+			font-family: 'Lato', sans-serif;
+			margin: 0;
+  			padding: 0;
+  			box-sizing: border-box;
+		}
+		
+		h1{
+			font-size: 5em;
+			text-align: center;
+			margin-top: 0.7em;
+		}.persons{
+			margin: 5%;
+			max-width: 1500px;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			margin-top: 1em;
+			gap: 10px;
+			align-items: center;
+		}
+		.person{
+			margin: 5px;
+			position: grid;
+			height: 10vh;
+			text-align: left;
+			list-style: none;
+			border: 1px solid black;
+			border-radius: 10px;
+			padding: 0.3em;
+			width: fit-content;
+    		vertical-align: top;
+		}.pp{
+			height: 9vh;
+			border-radius: 50%
+		}.text{
+			/* display: grid;
+			align-items: center; */
+			font-size: 3em;
+			margin-left: 5px;
+			vertical-align: top;
+		}
+	</style>
 </head>
 <body>
-    <center>
-        <h1>HAREM AZEEX</h1>
-        <button>s'inscrire</button>
-        <div id="membres"></div>
-    </center>
+	<center>
+		<h1>HAREM AZEEX</h1>
+		<button>s'inscrire</button>
+	
+	<div id="membres">
+		<ul class="persons">
+			<li class="person"><img src="http://www.gravatar.com/avatar/c7f8f8c8d8f8f8f8f8f8f8f8f8f8f8f8?s=200&d=mm&r=g" class="pp"><span class="text">Cassandra</span></li>
+			<li class="person"><img src="http://www.gravatar.com/avatar/c7f8f8c8d8f8f8f8f8f8f8f8f8f8f8f8?s=200&d=mm&r=g"
+					class="pp"><span class="text">Cassandra</span></li>
+			<li class="person"><img src="http://www.gravatar.com/avatar/c7f8f8c8d8f8f8f8f8f8f8f8f8f8f8f8?s=200&d=mm&r=g"
+					class="pp"><span class="text">Cassandra</span></li>
+			<li class="person"><img src="http://www.gravatar.com/avatar/c7f8f8c8d8f8f8f8f8f8f8f8f8f8f8f8?s=200&d=mm&r=g"
+					class="pp"><span class="text">Cassandra</span></li>
+			<li class="person"><img src="http://www.gravatar.com/avatar/c7f8f8c8d8f8f8f8f8f8f8f8f8f8f8f8?s=200&d=mm&r=g"
+					class="pp"><span class="text">Cassandra</span></li>
+		</ul>
+	</div>
+	</center>
+	<script>
+		var personnes = [
+			{
+				"name": "Cassandra",
+				"pp":"http://www.gravatar.com/avatar/c7f8f8c8d8f8f8f8f8f8f8f8f8f8f8f8?s=200&d=mm&r=g"
+			},
+			{
+				"name": "Patricia",
+				"pp": "http://www.gravatar.com/avatar/c7f8f8c8d8f8f8f8f8f8f8f8f8f8f8f8?s=200&d=mm&r=g"
+			},
+			{
+				"name": "Mélodie",
+				"pp": "http://www.gravatar.com/avatar/c7f8f8c8d8f8f8f8f8f8f8f8f8f8f8f8?s=200&d=mm&r=g"
+			},
+			{
+				"name": "Julie",
+				"pp": "http://www.gravatar.com/avatar/c7f8f8c8d8f8f8f8f8f8f8f8f8f8f8f8?s=200&d=mm&r=g"
+			},
+			{
+				"name": "Bob",
+				"pp": "http://www.gravatar.com/avatar/c7f8f8c8d8f8f8f8f8f8f8f8f8f8f8f8?s=200&d=mm&r=g"
+			},
+		]
+	</script>
 </body>
 </html>
