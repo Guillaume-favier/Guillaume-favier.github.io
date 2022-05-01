@@ -18,9 +18,13 @@
 			font-size: 5em;
 			text-align: center;
 			margin-top: 0.7em;
-		}.persons{
+		}
+		/*
+			Je m'excuse pour ce qui va suivre, je n'aime pas le css, mais je n'ai pas le choix.
+		*/
+		.persons{
 			margin: 5%;
-			max-width: 1500px;
+			max-width: 1900px;
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: center;
@@ -36,15 +40,13 @@
 			list-style: none;
 			border: 1px solid black;
 			border-radius: 10px;
-			padding: 0.8vh 1vh 2vh 1vh;
+			padding: 0.5vh 1vh 0.5vh 1vh;
 			width: fit-content;
     		vertical-align: top;
 		}.pp{
 			height: 9vh;
 			border-radius: 50%
 		}.text{
-			/* display: grid;
-			align-items: center; */
 			font-size: 6vh;
 			margin-left: 5px;
 			vertical-align: top;
@@ -58,15 +60,8 @@
 	
 	<div id="membres">
 		<ul class="persons">
-			<li class="person"><img src="http://www.gravatar.com/avatar/c7f8f8c8d8f8f8f8f8f8f8f8f8f8f8f8?s=200&d=mm&r=g" class="pp"><span class="text">Cassandra</span></li>
-			<li class="person"><img src="http://www.gravatar.com/avatar/c7f8f8c8d8f8f8f8f8f8f8f8f8f8f8f8?s=200&d=mm&r=g"
-					class="pp"><span class="text">Cassandra</span></li>
-			<li class="person"><img src="http://www.gravatar.com/avatar/c7f8f8c8d8f8f8f8f8f8f8f8f8f8f8f8?s=200&d=mm&r=g"
-					class="pp"><span class="text">Cassandra</span></li>
-			<li class="person"><img src="http://www.gravatar.com/avatar/c7f8f8c8d8f8f8f8f8f8f8f8f8f8f8f8?s=200&d=mm&r=g"
-					class="pp"><span class="text">Cassandra</span></li>
-			<li class="person"><img src="http://www.gravatar.com/avatar/c7f8f8c8d8f8f8f8f8f8f8f8f8f8f8f8?s=200&d=mm&r=g"
-					class="pp"><span class="text">Cassandra</span></li>
+			
+			
 		</ul>
 	</div>
 	</center>
@@ -93,6 +88,20 @@
 				"pp": "http://www.gravatar.com/avatar/c7f8f8c8d8f8f8f8f8f8f8f8f8f8f8f8?s=200&d=mm&r=g"
 			},
 		]
+		personnes.forEach(element => {
+			var li = document.createElement("li");
+			li.classList.add("person");
+			var img = document.createElement("img");
+			img.src = element.pp;
+			img.classList.add("pp");
+			var text = document.createElement("span");
+			text.classList.add("text");
+			text.innerHTML = element.name;
+			li.appendChild(img);
+			li.appendChild(text);
+			document.getElementsByClassName("persons")[0].appendChild(li);
+
+		});
 	</script>
 </body>
 </html>
