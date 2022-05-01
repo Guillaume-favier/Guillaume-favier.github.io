@@ -56,52 +56,32 @@
 <body>
 	<center>
 		<h1>HAREM AZEEX</h1>
-		<button>s'inscrire</button>
+		<button><a href="https://discord.com/api/oauth2/authorize?client_id=970270178266984489&redirect_uri=http%3A%2F%2F127.0.0.1%3A8080%2Fapi%2Fredirect&response_type=code&scope=identify">s'inscrire</a></button>
 	
-	<div id="membres">
-		<ul class="persons">
-			
-			
-		</ul>
-	</div>
+		<div id="membres">
+			<ul class="persons">
+			</ul>
+		</div>
 	</center>
 	<script>
-		var personnes = [
-			{
-				"name": "Cassandra",
-				"pp":"http://www.gravatar.com/avatar/c7f8f8c8d8f8f8f8f8f8f8f8f8f8f8f8?s=200&d=mm&r=g"
-			},
-			{
-				"name": "Patricia",
-				"pp": "http://www.gravatar.com/avatar/c7f8f8c8d8f8f8f8f8f8f8f8f8f8f8f8?s=200&d=mm&r=g"
-			},
-			{
-				"name": "Mélodie",
-				"pp": "http://www.gravatar.com/avatar/c7f8f8c8d8f8f8f8f8f8f8f8f8f8f8f8?s=200&d=mm&r=g"
-			},
-			{
-				"name": "Julie",
-				"pp": "http://www.gravatar.com/avatar/c7f8f8c8d8f8f8f8f8f8f8f8f8f8f8f8?s=200&d=mm&r=g"
-			},
-			{
-				"name": "Bob",
-				"pp": "http://www.gravatar.com/avatar/c7f8f8c8d8f8f8f8f8f8f8f8f8f8f8f8?s=200&d=mm&r=g"
-			},
-		]
-		personnes.forEach(element => {
-			var li = document.createElement("li");
-			li.classList.add("person");
-			var img = document.createElement("img");
-			img.src = element.pp;
-			img.classList.add("pp");
-			var text = document.createElement("span");
-			text.classList.add("text");
-			text.innerHTML = element.name;
-			li.appendChild(img);
-			li.appendChild(text);
-			document.getElementsByClassName("persons")[0].appendChild(li);
-
-		});
+		(async() => {
+			let ppl = await fetch("http://1ere2:8000/api/harem")
+			let ppls = await ppl.json()
+			ppls["harem"].forEach(element => {
+				var li = document.createElement("li");
+				li.classList.add("person");
+				var img = document.createElement("img");
+				img.src = "https://cdn.discordapp.com/avatars/"+element.id+"/"+element.avatar+".png";
+				img.classList.add("pp");
+				var text = document.createElement("span");
+				text.classList.add("text");
+				text.innerHTML = element.name+"<span style='color:grey'>#"+element.discriminator+"</span>";
+				li.appendChild(img);
+				li.appendChild(text);
+				document.getElementsByClassName("persons")[0].appendChild(li);
+	
+			});
+		})()
 	</script>
 </body>
 </html>
