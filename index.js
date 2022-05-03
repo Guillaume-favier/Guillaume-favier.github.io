@@ -19,7 +19,9 @@ app.get("/", (req, res) => {
 app.get("/api/discordredirect", (req, res) => {
     const redirect = encodeURIComponent(site+"/api/rediect")
     console.log(redirect)
-    res.redirect(302, "https://discord.com/api/oauth2/authorize?client_id=970270178266984489&redirect_uri="+redirect+"&response_type=code&scope=identify")
+    // const url = "https://discord.com/api/oauth2/authorize?client_id=970270178266984489&redirect_uri="+redirect+"&response_type=code&scope=identify"
+    const url = "https://discord.com/api/oauth2/authorize?client_id=970270178266984489&redirect_uri=http%3A%2F%2F1ere2.tk%3A8000%2Fapi%2Fredirect&response_type=code&scope=identify"
+    res.redirect(302, url)
 })
 
 app.get("/api/harem", (req, res) => {
