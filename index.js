@@ -1,12 +1,12 @@
-﻿// https://discord.com/api/oauth2/authorize?client_id=970270178266984489&redirect_uri=http%3A%2F%2F127.0.0.1%3A5500%2Fapi%2Fredirect&response_type=code&scope=identify
+﻿
 require("dotenv").config();
 const express = require("express");
 const axios = require("axios")
 const url = require("url")
 const fs = require("fs");
 const path = require("path");
-console.log(process.env.DISCORD_OAUTH_CLIENT_ID);
-
+const port = process.env.APP_PORT || 8000;
+const site = process.env.APP_WEBSITE+":"+port
 const getHarem = () => {
     return JSON.parse(fs.readFileSync(path.join(__dirname, "harem.json"), "utf8"))
 }
@@ -16,7 +16,11 @@ app.get("/", (req, res) => {
     res.sendFile(__dirname + "/index.html");
 })
 
-
+app.get("/api/discordredirect", (req, res) => {
+    const redirect = encodeURIComponent(site+"/api/rediect")
+    console.log(redirect)
+    res.redirect(302, "https://discord.com/api/oauth2/authorize?client_id=970270178266984489&redirect_uri="+redirect+"&response_type=code&scope=identify")
+})
 
 app.get("/api/harem", (req, res) => {
     res.status(200).send(getHarem());
@@ -31,7 +35,7 @@ app.get("/api/redirect", async (req, res) => {
                 client_secret: process.env.DISCORD_OAUTH_SECRET,
                 grant_type: "authorization_code",
                 "code": code.toString(),
-                redirect_uri: "http://1ere2.tk:8000/api/redirect"
+                redirect_uri: site+"/api/redirect"
             }
         )
         try {
@@ -56,7 +60,7 @@ app.get("/api/redirect", async (req, res) => {
             if (stop) {res.status(400).send("Tu es déjà dans le harem"); return}
             harem["harem"].push({"name":user.username,"discriminator":user.discriminator,"avatar":user.avatar,"id":user.id});
             fs.writeFileSync(path.join(__dirname,"harem.json"),JSON.stringify(harem))
-            res.send(harem);
+            res.redirect("/");
             return
         } catch (error) {
             console.log(error);
@@ -70,6 +74,6 @@ app.get("/api/redirect", async (req, res) => {
 )
 
 
-app.listen(8080, () => {
+app.listen(port, () => {
     console.log("server is running")
 });
